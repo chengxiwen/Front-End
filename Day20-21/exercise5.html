@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE ECMAScript</title>
+	<style>
+        .img{
+			background-image: url("erik_ce204002.jpg");
+			background-repeat: no-repeat;
+			background-position: 0 -480px;
+			width: 480px;
+			height: 480px;
+		}
+		
+	</style>
+</head>
+<body>
+    <div class="img"></div>
+    <button id="picMove">动</button>
+    <button id="picStop">停</button>
+	
+	<script>
+        
+        var btn5 = document.querySelector('#picMove');
+        var btn = document.querySelector('#picStop');
+        var picBg = document.querySelector('.img');
+        var forward = true;
+        var picPosition = 0;
+        
+        btn5.addEventListener('click',function() {
+            var interval = setInterval(function() {
+                picPosition = forward ? picPosition-480 : picPosition+480;
+                if(picPosition===-7680) {
+                    forward = false;
+                }
+                if(picPosition===0) {
+                    forward=true;
+                }
+                picBg.style.backgroundPosition='0'+picPosition+'px';
+            },100)
+            btn.addEventListener('click',function() {
+                clearInterval(interval);
+            })
+        })
+        
+        	
+	</script>
+</body>
+</html>
