@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE ECMAScript</title>
+	<style>
+	
+		
+	</style>
+</head>
+<body>
+    <input id="name" type="text" onkeypress="key(event)">    
+    <button id="submit-btn">Submit</button>
+
+	
+	<script>
+        var input = document.querySelector("#name");
+        var submitBtn = document.querySelector("#submit-btn");
+
+        submitBtn.addEventListener('click',function() {
+            console.log(input.value);
+            input.value = "";
+        })
+
+        input.addEventListener("keydown",function(e) {
+            var keyCode = e.keyCode;
+            if(keyCode==27) {
+                e.preventDefault();
+                input.value = "";
+            }
+
+            if(keyCode==13) {
+                e.preventDefault();
+                console.log(input.value);
+                input.value = "";                
+            }
+        })
+        	
+	</script>
+</body>
+</html>
