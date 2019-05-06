@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE ECMAScript</title>
+	<style>
+	
+		
+	</style>
+</head>
+<body>
+    
+	
+	<script>
+        var scoreObject = {
+            "Tony": {
+                "Math": 95,
+                "English": 79,
+                "Music": 68
+            }, 
+            "Simon": {
+                "Math": 100,
+                "English": 95,
+                "Music": 98
+            }, 
+            "Annie": {
+                "Math": 54,
+                "English": 65,
+                "Music": 88
+            }
+        }
+        var arr = [];
+        for(var i in scoreObject) {
+            var person = scoreObject[i];
+            arr.push(i,person.Math,person.English,person.Music);
+        }
+        console.log(arr);
+
+
+  
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE ECMAScript</title>
+	<style>
+	
+		
+	</style>
+</head>
+<body>
+	
+	
+	
+	<script>
+        var tree = {
+        "id": 0,
+        "name": "root",
+        "left": {
+            "id": 1,
+            "name": "Simon",
+            "left": {
+                "id": 3,
+                "name": "Carl",
+                "left": {
+                    "id": 7,
+                    "name": "Lee",
+                    "left": {
+                        "id": 11,
+                        "name": "Fate"
+                    }
+                },
+                "right": {
+                    "id": 8,
+                    "name": "Annie",
+                    "left": {
+                        "id": 12,
+                        "name": "Saber"
+                    }
+                }
+            },
+            "right": {
+                "id": 4,
+                "name": "Tony",
+                "left": {
+                    "id": 9,
+                    "name": "Candy"
+                }
+            }
+        },
+        "right": {
+            "id": 2,
+            "name": "right",
+            "left": {
+                "id": 5,
+                "name": "Carl",
+            },
+            "right": {
+                "id": 6,
+                "name": "Carl",
+                "right": {
+                    "id": 10,
+                    "name": "Kai"
+                }        
+            }
+        }
+    }
+    console.log('根据name找到对应的id:');
+    console.log('name:root,id:'+findIdByName('root'));
+    console.log('name:Simon,id:'+findIdByName('Simon'));
+    console.log('name:Tony,id:'+findIdByName('Tony'));
+    console.log('name:Carl,id:'+findIdByName('Carl'));
+
+
+    console.log('根据id找到对应的name');
+    console.log('name:'+findNameById('3')+',id:3');
+    console.log('name:'+findNameById('4')+',id:4');
+    console.log('name:'+findNameById('7')+',id:7');
+    console.log('name:'+findNameById('8')+',id:8');
+
+    // 假设id和name均不会重复，根据输入name找到对应的id
+    function findIdByName(name) {
+        var loop = function(obj) {
+            if(!obj) {
+                return false;
+            }
+            if(obj.name==name) {
+                return obj.id;
+            }
+            return loop(obj.left) || loop(obj.right);
+        }
+        return loop(tree);
+    }
+
+    // 假设id和name均不会重复，根据输入id找到对应的name
+    function findNameById(id) {
+        var loop = function(obj) {
+            if(!obj) {
+                return false;
+            }
+            if(obj.id==id) {
+                return obj.name;
+            }
+            return loop(obj.left) || loop(obj.right);
+        }
+        return loop(tree);
+    }
+
+    //前序遍历
+	console.log('\n所有名字前序遍历：');
+    getListWithDLR();
+    
+	//中序遍历
+    console.log('\n所有名字中序遍历：');
+    getListWithLDR();
+    
+	//后续遍历
+    console.log('\n所有名字后序遍历：');
+    getListWithLRD();
+
+    // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+    function getListWithDLR() {
+        var loop = function(obj) {
+            console.log(obj.name);
+            if(obj.left) {
+                loop(obj.left);
+            }
+            if(obj.right) {
+                loop(obj.right);
+            }
+        }
+        loop(tree);
+    }
+
+    // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+    function getListWithLDR() {
+        var loop = function(obj) {
+            if(obj.left) {
+                loop(obj.left);
+            }
+            console.log(obj.name);
+            if(obj.right) {
+                loop(obj.right);
+            }
+        }
+        loop(tree);
+    }
+
+    // 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+    function getListWithLRD() {
+        var loop = function(obj) {
+            if(obj.left) {
+                loop(obj.left);
+            }
+            if(obj.right) {
+                loop(obj.right);
+            }
+            console.log(obj.name);
+        }
+        loop(tree);
+    }
+	</script>
+</body>
+</html>

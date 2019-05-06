@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE ECMAScript</title>
+	<style>
+	
+		
+	</style>
+</head>
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：apple-&gt;pear</p>
+    <div id="exe5BtnSet">  
+        <button id="push-btn">进栈</button>
+        <button id="pop-btn">退栈</button>
+        <button id="font-btn">打印栈顶元素内容</button>
+        <button id="empty-btn">判断栈是否为空</button>
+	</div>
+	
+	<script>
+        
+        var stack = ["apple", "pear"];
+        var exe5Result = document.querySelector("#stack-cont");
+
+        document.querySelector("#exe5BtnSet").addEventListener('click',function() {
+            var input = document.querySelector("#stack-input").value;
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            switch(target.id) {
+                //进栈
+                case 'push-btn':
+                    if(input!='') {
+                        stack.unshift(input);
+                        exe5Result.textContent = `栈为${stack.join('<-')}`;
+                    }else {
+                        exe5Result.textContent = `输入不能为空`;
+                    }
+                    break;
+                //退栈
+                case 'pop-btn':
+                    stack.shift();
+                    exe5Result.textContent = `栈为${stack.join('<-')}`;
+                    break;
+                //打印栈顶元素内容
+                case 'font-btn':
+                    exe5Result.textContent = `栈顶元素为为${stack[0]}`;
+                    break;  
+                //判断栈是否为空
+                case 'empty-btn':
+                    exe5Result.textContent = stack.length==0 ? '栈为空' : '栈不为空';
+                    break;
+            }
+        })
+        
+
+	</script>
+</body>
+</html>
