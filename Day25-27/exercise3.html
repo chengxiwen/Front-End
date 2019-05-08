@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE ECMAScript</title>
+	<style>
+	
+		
+	</style>
+</head>
+<body onload="startTime()">
+    <div id="txt"></div>
+    <div id="txt2"></div>
+   
+	
+	<script>
+        function startTime(){
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth()+1;
+            var date = d.getDate();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+
+            month = checkTime(month);
+            date = checkTime(date);
+            h = checkTime(h);
+            m = checkTime(m);
+            s= checkTime(s);
+
+            var weekday = new Array(7);
+            weekday[0]='星期日';
+            weekday[1]='星期一';
+            weekday[2]='星期二';
+            weekday[3]='星期三';
+            weekday[4]='星期四';
+            weekday[5]='星期五';
+            weekday[6]='星期六';
+
+            var weekday1 = new Array(7);
+            weekday1[0]='Sunday';
+            weekday1[1]='Monday';
+            weekday1[2]='TuesDay';
+            weekday1[3]='Wendnesday';
+            weekday1[4]='Thursday';
+            weekday1[5]='Friday';
+            weekday1[6]='Saturday';
+
+            document.getElementById('txt').innerHTML = year+'年'+month+'月'+date+'日'+weekday[d.getDay()]+h+':'+m+':'+s;
+            document.getElementById('txt2').innerHTML = year+'-'+month+'-'+date+' '+weekday1[d.getDay()]+' '+h+':'+m+':'+s+' '+isAM(h);
+            t=setTimeout('startTime()',1000)
+
+        }
+
+        function checkTime(i) {
+            if(i<10) {
+                i = '0'+i;
+            }
+            return i;
+        }
+        function isAM(i) {
+            if(i>11) {
+                return 'PM';
+            }else {
+                return 'AM';
+            }
+        }
+
+        //document.write(year+'年'+month+'月'+date+'日'+weekday[d.getDay()]+h+':'+m+':'+s);
+	</script>
+</body>
+</html>
+
