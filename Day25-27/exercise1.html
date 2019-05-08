@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE ECMAScript</title>
+	<style>
+	
+		
+	</style>
+</head>
+<body onload="startTime()">
+    <div id="txt">
+    </div>
+   
+	
+	<script>
+        function startTime(){
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth()+1;
+            var date = d.getDate();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+
+            month = checkTime(month);
+            date = checkTime(date);
+            h = checkTime(h);
+            m = checkTime(m);
+            s= checkTime(s);
+
+            var weekday = new Array(7);
+            weekday[0]='星期日';
+            weekday[1]='星期一';
+            weekday[2]='星期二';
+            weekday[3]='星期三';
+            weekday[4]='星期四';
+            weekday[5]='星期五';
+            weekday[6]='星期六';
+
+            document.getElementById('txt').innerHTML = year+'年'+month+'月'+date+'日'+weekday[d.getDay()]+h+':'+m+':'+s;
+            t=setTimeout('startTime()',1000)
+
+        }
+
+        function checkTime(i) {
+            if(i<10) {
+                i = '0'+i;
+            }
+            return i;
+        }
+
+        //document.write(year+'年'+month+'月'+date+'日'+weekday[d.getDay()]+h+':'+m+':'+s);
+	</script>
+</body>
+</html>
+
